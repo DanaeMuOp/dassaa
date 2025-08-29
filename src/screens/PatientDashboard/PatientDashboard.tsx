@@ -5,6 +5,7 @@ import { CancellationModal } from "../../components/CancellationModal";
 import { FAQModal } from "../../components/FAQModal";
 import { LanguageModal } from "../../components/LanguageModal";
 import { MenuDropdown } from "../../components/MenuDropdown";
+import { SupportModal } from "../../components/SupportModal";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import {
@@ -19,6 +20,7 @@ export const PatientDashboard = (): JSX.Element => {
   const [isMenuDropdownOpen, setIsMenuDropdownOpen] = React.useState(false);
   const [isCancellationModalOpen, setIsCancellationModalOpen] = React.useState(false);
   const [isFAQModalOpen, setIsFAQModalOpen] = React.useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = React.useState(false);
   const [selectedAppointment, setSelectedAppointment] = React.useState<any>(null);
   const [currentView, setCurrentView] = React.useState<'reservas' | 'perfil'>('reservas');
   const menuButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -181,6 +183,7 @@ export const PatientDashboard = (): JSX.Element => {
               <Button
                 variant="ghost"
                 className="w-full justify-start px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                onClick={() => setIsSupportModalOpen(true)}
               >
                 <span className="text-sm font-medium">Soporte</span>
               </Button>
@@ -401,6 +404,11 @@ export const PatientDashboard = (): JSX.Element => {
       <FAQModal
         isOpen={isFAQModalOpen}
         onClose={() => setIsFAQModalOpen(false)}
+      />
+
+      <SupportModal
+        isOpen={isSupportModalOpen}
+        onClose={() => setIsSupportModalOpen(false)}
       />
     </>
   );
